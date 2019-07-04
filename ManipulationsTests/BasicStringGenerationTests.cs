@@ -1,4 +1,3 @@
-using System;
 using Manipulations.StringManips;
 using Xunit;
 

@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Fuzzer.ManipulationsTests.dll")]
 
-namespace Manipulations
+namespace Fuzzing.Manipulations
 {
     public abstract class Manipulation
     {

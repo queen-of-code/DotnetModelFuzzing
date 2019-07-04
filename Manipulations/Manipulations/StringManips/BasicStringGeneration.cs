@@ -1,4 +1,6 @@
-﻿namespace Manipulations.StringManips
+﻿using Fuzzing.Manipulations;
+
+namespace Manipulations.StringManips
 {
     public class BasicStringGeneration : Manipulation, IGenerationManipulation<string>
     {

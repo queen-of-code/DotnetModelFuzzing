@@ -1,4 +1,5 @@
 ﻿using System;
+using Fuzzing.Manipulations;
 
 namespace Manipulations.StringManips
 {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Manipulations
+﻿namespace Fuzzing.Manipulations
 {
-    public interface IGenerationManipulation<T> 
+    public interface IGenerationManipulation<T>
     {
         T Manipulate();
     }
