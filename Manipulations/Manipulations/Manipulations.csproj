@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Fuzzing.Manipulations</AssemblyName>
+    <RootNamespace>Fuzzing.Manipulations</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Zeebee Technologies 2019</Copyright>
+    <Authors>Melissa Benua</Authors>
+    <Company>Zeebee Technologies</Company>
+  </PropertyGroup>
+
+</Project>
