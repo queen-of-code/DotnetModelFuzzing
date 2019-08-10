@@ -39,5 +39,17 @@ namespace Fuzzing.Manipulations
 
             return new string('\ud790', length);
         }
+
+        protected string InsertString(string originalString, string insertion)
+        {
+            if (string.IsNullOrEmpty(originalString))
+                return insertion;
+
+            if (string.IsNullOrEmpty(insertion))
+                return originalString;
+
+            int index = Random.Next(0, originalString.Length);
+            return originalString.Insert(index, insertion);
+        }
     }
 }

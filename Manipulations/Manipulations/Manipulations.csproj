@@ -10,4 +10,12 @@
     <Company>Zeebee Technologies</Company>
   </PropertyGroup>
 
+  
+  
+  <ItemGroup>
+    <None Update="fuzzdb\**\*.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

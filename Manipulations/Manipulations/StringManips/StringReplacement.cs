@@ -10,13 +10,12 @@ namespace Fuzzing.Manipulations.StringManips
         public string Manipulate(string input)
         {
             if (string.IsNullOrEmpty(input))
-                return string.Empty;
+                return input;
 
             int length = Random.Next(1, input.Length + 1);
             var newString = GenerateRandomAsciiString(length);
 
-            int index = Random.Next(0, input.Length - length);
-            return input.Remove(index, length).Insert(index, newString);
+            return this.InsertString(input, newString);
         }
     }
 }
