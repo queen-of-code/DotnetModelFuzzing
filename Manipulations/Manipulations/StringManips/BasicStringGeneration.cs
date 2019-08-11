@@ -1,6 +1,4 @@
-﻿using Fuzzing.Manipulations;
-
-namespace Manipulations.StringManips
+﻿namespace Fuzzing.Manipulations.StringManips
 {
     public class BasicStringGeneration : Manipulation<string>, IGenerationManipulation<string>
     {

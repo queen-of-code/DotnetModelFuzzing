@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Fuzz>
+  <Fields>
+    <Path Type="string" />
+    <QueryString Type="string" />
+    <Header Type="keyvaluepair">
+      
+    </Header>
+  </Fields>
+  
+</Fuzz>

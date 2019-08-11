@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Fuzzing.Manipulations
 {
@@ -9,17 +10,17 @@ namespace Fuzzing.Manipulations
 
         protected IList<string> ViableInputs;
 
-        public FuzzDbManipulation(string inputFiles) : base()
+        public FuzzDbManipulation(string inputFiles, string[] excludeFiles = null) : base()
         {
-            ViableInputs = LoadFromPath(inputFiles);
+            ViableInputs = LoadFromPath(inputFiles, excludeFiles);
         }
 
-        public FuzzDbManipulation(int seed, string inputFiles) : base(seed)
+        public FuzzDbManipulation(int seed, string inputFiles, string[] excludeFiles = null) : base(seed)
         {
-            ViableInputs = LoadFromPath(inputFiles);
+            ViableInputs = LoadFromPath(inputFiles, excludeFiles);
         }
 
-        protected IList<string> LoadFromPath(string baseDir)
+        protected IList<string> LoadFromPath(string baseDir, string[] excludedFileNames = null)
         {
             if (string.IsNullOrEmpty(baseDir))
                 return null;
@@ -31,7 +32,13 @@ namespace Fuzzing.Manipulations
             var allInputs = new List<string>();
             foreach (var file in Directory.GetFiles(fullPath, "*.txt"))
             {
-                allInputs.AddRange(File.ReadAllLines(file));
+                if (excludedFileNames != null)
+                {
+                    if (excludedFileNames.Contains(Path.GetFileNameWithoutExtension(file)))
+                        continue;
+                }
+
+                allInputs.AddRange(File.ReadAllLines(file).Where(s => !string.IsNullOrEmpty(s)));
             }
 
             return allInputs;

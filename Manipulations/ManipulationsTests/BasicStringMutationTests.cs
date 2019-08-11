@@ -1,4 +1,4 @@
-﻿using Manipulations.StringManips;
+﻿using Fuzzing.Manipulations.StringManips;
 using Xunit;
 
 namespace ManipulationsTests

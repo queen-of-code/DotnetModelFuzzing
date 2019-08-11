@@ -1,20 +1,15 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Options for fuzz testing on dotnet core are somewhat limited - especially when you want to provide a data model that is not necessarily file or I/O based. Thus, enter Dotnet Model Fuzzing! Based on the attacks from FuzzDB, this package allows you to provide a model of your choice, generate an attack strategy based on that model, and then quickly apply fuzz attacks to that provided data model.
+
+This allows you to provide sane templates for your data, such that your fuzz attacks will have a much higher likelyhood of testing code you actually care about. When you're running an HTTP service, testing IIS or Apache isn't all that useful compared to the benefit you would gain from testing your application-specific code!
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
-
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+TODO: Use the nuget package!
+TODO: See some example usages!
 
 # Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+All contributions welcome. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Further Reading
+* https://github.com/fuzzdb-project/fuzzdb
+* https://www.fuzzingbook.org/html/APIFuzzer.html

@@ -1,19 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
-
-    <AssemblyName>Fuzzer.FuzzerTests</AssemblyName>
-
-    <RootNamespace>Fuzzer.FuzzerTests</RootNamespace>
-
-    <ApplicationIcon />
-
-    <OutputType>Library</OutputType>
-
-    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fuzzer\Fuzzer.csproj" />
+    <ProjectReference Include="..\Manipulations\Manipulations.csproj" />
   </ItemGroup>
 
 </Project>
