@@ -2,12 +2,12 @@
 
 namespace Fuzzing.Manipulations.StringManips
 {
-    public class StringReplacement : Manipulation, IMutationManipulation<string>
+    public class StringReplacement : Manipulation<string>, IMutationManipulation<string>
     {
         public StringReplacement() : base() { }
         public StringReplacement(int seed) : base(seed) { }
 
-        public string Manipulate(string input)
+        public override string Manipulate(string input = default)
         {
             if (string.IsNullOrEmpty(input))
                 return input;

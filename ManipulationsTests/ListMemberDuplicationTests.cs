@@ -23,15 +23,15 @@ namespace ManipulationsTests
         public void Replace(List<string> input, int? expectedLength)
         {
             var manip = new ListMemberDuplication<string>(5);
-            var result = manip.Manipulate(ref input);
+            var result = manip.Manipulate(input);
 
             if (expectedLength.HasValue)
             {
-                Assert.Equal(expectedLength.Value, input.Count);
+                Assert.Equal(expectedLength.Value, result.Count);
             }
             else
             {
-                Assert.Null(input);
+                Assert.Null(result);
             }
         }
     }

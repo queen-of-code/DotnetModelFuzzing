@@ -4,6 +4,6 @@ namespace Fuzzing.Manipulations
 {
     public interface IListManipulation<T>
     {
-        bool Manipulate(ref List<T> input);
+        List<T> Manipulate(List<T> input);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Fuzzing.Manipulations.CollectionManips
 {
-    public class ListMemberDuplication<T> : Manipulation, IListManipulation<T> 
+    public class ListMemberDuplication<U> : Manipulation<List<U>>, IListManipulation<U> 
     {
         public ListMemberDuplication()
         {
@@ -13,16 +13,15 @@ namespace Fuzzing.Manipulations.CollectionManips
         {
         }
 
-        public bool Manipulate(ref List<T> input)
+        public override List<U> Manipulate(List<U> input)
         {
             if (input != null && input.Count > 0)
             {
                 var index = Random.Next(0, input.Count);
                 input.Add(input[index]);
-                return true;
             }
 
-            return false;
+            return input;
         }
     }
 }

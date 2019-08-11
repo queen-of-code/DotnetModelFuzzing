@@ -2,6 +2,6 @@
 {
     public interface IGenerationManipulation<T>
     {
-        T Manipulate();
+        T Manipulate(T input = default);
     }
 }

@@ -2,12 +2,12 @@
 
 namespace Manipulations.StringManips
 {
-    public class BasicStringGeneration : Manipulation, IGenerationManipulation<string>
+    public class BasicStringGeneration : Manipulation<string>, IGenerationManipulation<string>
     {
         public BasicStringGeneration() : base() { }
         public BasicStringGeneration(int seed) : base(seed) { }
 
-        public string Manipulate()
+        public override string Manipulate(string input = default)
         {
             int length = this.Random.Next(0, short.MaxValue);
 

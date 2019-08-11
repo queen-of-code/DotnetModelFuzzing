@@ -1,40 +1,59 @@
-﻿using System;
+﻿using Fuzzing.Manipulations;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
-using Fuzzing.Manipulations;
 
 [assembly: InternalsVisibleTo("Fuzzer.FuzzerTests.dll")]
 
 namespace Fuzzing.Fuzzer
 {
-    public class Fuzzer
+    public abstract class Fuzzer<T>
     {
-        private readonly Strategy Strategy;
-        private readonly List<Manipulation> Manipulations = new List<Manipulation>();
+        private static readonly Type SeedType = typeof(Manipulation<T>);
+        private static readonly Type[] AllManipTypes = SeedType.Assembly.GetTypes();
+
+        protected readonly Strategy Strategy;
+        protected readonly Random Random;
+        protected readonly List<Manipulation<T>> LoadedManipulations; 
 
         public Fuzzer()
         {
-            Strategy = new Strategy();
+            this.Strategy = new Strategy();
+            this.Random = new Random();
+            this.LoadedManipulations = LoadManipulations();
         }
 
-        public Fuzzer(Strategy strategy)
+        public Fuzzer(Strategy strategy, int randomSeed)
         {
-            Strategy = strategy;
+            this.Strategy = strategy;
+            this.Random = new Random(randomSeed);
+
+            this.LoadedManipulations = LoadManipulations(randomSeed);
         }
 
-        public static List<Manipulation> LoadManipulations(Strategy strategy)
+        public List<Manipulation<T>> LoadManipulations(int? randomSeed = null)
         {
-            if (strategy?.ValidManipulations == null)
+            if (this.Strategy?.ValidManipulations == null || this.Strategy.ValidManipulations.Count == 0)
                 return null;
 
-            List<Manipulation> manipulations = new List<Manipulation>(strategy.ValidManipulations.Count);
+            var manipulations = new List<Manipulation<T>>(this.Strategy.ValidManipulations.Count);
 
-            foreach (var manip in strategy.ValidManipulations)
+            foreach (var manipName in this.Strategy.ValidManipulations)
             {
                 try
                 {
-                    var type = Type.GetType(manip);
-                    var result = (Manipulation)Activator.CreateInstance(type);
+                    var type = AllManipTypes.FirstOrDefault(s => string.Equals(s.Name, manipName));
+                    Manipulation<T> result;
+                    if (randomSeed.HasValue)
+                    {
+                        result = (Manipulation<T>)Activator.CreateInstance(type, randomSeed.Value);
+                    }
+                    else
+                    {
+                        result = (Manipulation<T>)Activator.CreateInstance(type);
+                    }
+
                     manipulations.Add(result);
                 }
                 catch (Exception e)
@@ -46,14 +65,6 @@ namespace Fuzzing.Fuzzer
             return manipulations;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public string FuzzString()
-        {
-
-            return null;
-        }
+        public abstract T Fuzz(T input = default);
     }
 }

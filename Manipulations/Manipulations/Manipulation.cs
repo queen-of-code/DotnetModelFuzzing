@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace Fuzzing.Manipulations
 {
-    public abstract class Manipulation
+    public abstract class Manipulation<T> : IManupulation
     {
         protected Random Random;
 
@@ -18,6 +18,8 @@ namespace Fuzzing.Manipulations
         {
             Random = new Random(seed);
         }
+
+        public abstract T Manipulate(T input = default(T));
 
         /// <summary>
         /// Generates a simple ASCII string of the specified length. 

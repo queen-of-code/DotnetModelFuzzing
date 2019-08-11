@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Fuzzing.Manipulations
 {
-    public class FuzzDbManipulation : Manipulation
+    public abstract class FuzzDbManipulation<T> : Manipulation<T>
     {
         private const string FuzzDbAttackPathBase = "fuzzdb";
 

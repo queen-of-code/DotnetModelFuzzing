@@ -1,6 +1,7 @@
-using System;
-using System.Collections.Generic;
 using Fuzzing.Fuzzer;
+using Manipulations.StringManips;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace FuzzerTests
@@ -18,10 +19,13 @@ namespace FuzzerTests
                     "BasicStringMutation"
                 }
             };
+
+            var fuzzer = new StringFuzzer(strat, 5);
             
-            var result =  Fuzzer.LoadManipulations(strat);
+            var result =  fuzzer.LoadManipulations();
             Assert.NotNull(result);
             Assert.Single(result);
+            Assert.Equal(typeof(BasicStringMutation), result.First().GetType());
         }
     }
 }
