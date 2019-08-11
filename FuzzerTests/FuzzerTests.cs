@@ -6,10 +6,10 @@ using Xunit;
 
 namespace FuzzerTests
 {
-    public class UnitTest1
+    public class FuzzerTests
     {
         [Fact]
-        public void LoadManipulations()
+        public void LoadManipulations_Strings()
         {
             var strat = new Strategy
             {

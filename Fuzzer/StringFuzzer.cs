@@ -1,10 +1,6 @@
-﻿using Fuzzing.Manipulations;
-using System;
-using System.Linq;
-
-namespace Fuzzing.Fuzzer
+﻿namespace Fuzzing.Fuzzer
 {
-    public sealed class StringFuzzer : Fuzzer<string>
+    public sealed class StringFuzzer : Fuzzer<Strategy, string, string>
     {
         public StringFuzzer() : base() { }
 
@@ -13,21 +9,7 @@ namespace Fuzzing.Fuzzer
 
         public override string Fuzz(string input = null)
         {
-            var manips = this.Random.Next(0, Strategy.MaxManipulations);
-
-            var validManips = this.LoadedManipulations.Where(m => m is Manipulation<string>).ToArray();
-            if (!validManips.Any())
-                return null;
-
-            string fuzzed = input;
-            for (int x = 0; x < manips; x++)
-            {
-                int whichManip = Random.Next(0, validManips.Length);
-                var manip = validManips[whichManip];
-                fuzzed = manip.Manipulate(fuzzed);
-            }
-
-            return fuzzed;
+            return DoFuzzingWork<string>(this.LoadedManipulations, input);
         }
     }
 }
