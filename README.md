@@ -4,8 +4,9 @@ Options for fuzz testing on dotnet core are somewhat limited - especially when y
 This allows you to provide sane templates for your data, such that your fuzz attacks will have a much higher likelyhood of testing code you actually care about. When you're running an HTTP service, testing IIS or Apache isn't all that useful compared to the benefit you would gain from testing your application-specific code!
 
 # Getting Started
-TODO: Use the nuget package!
-TODO: See some example usages!
+TODO: Use the soon-to-be-published nuget package!
+
+For examples on how to get started, take a look at the simple HTTP request application in ExampleApp.
 
 # Contribute
 All contributions welcome. 
