@@ -8,6 +8,8 @@ TODO: Use the soon-to-be-published nuget package!
 
 For examples on how to get started, take a look at the simple HTTP request application in ExampleApp.
 
+Slides are available at https://www.slideshare.net/MelissaBenua/service-fuzz-testing-for-fun-and-profit
+
 # Contribute
 All contributions welcome. 
 
