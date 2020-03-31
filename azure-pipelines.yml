@@ -15,5 +15,10 @@ steps:
   displayName: 'Run a multi-line script'
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'test'
-    projects: 'Manipulations.sln'
+    projects: '**/*Tests.csproj'
