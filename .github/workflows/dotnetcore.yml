@@ -21,5 +21,3 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Debug --no-restore DotnetModelFuzzing.sln
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal DotnetModelFuzzing.sln
