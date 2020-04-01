@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuzzerTests", "ModelFuzzer\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManipulationsTests", "Manipulations\ManipulationsTests\ManipulationsTests.csproj", "{DE9D443C-2415-4342-8EE7-1DE49061DA4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{2FD224F1-C204-4342-B9DA-39F0EF5438B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{2FD224F1-C204-4342-B9DA-39F0EF5438B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
