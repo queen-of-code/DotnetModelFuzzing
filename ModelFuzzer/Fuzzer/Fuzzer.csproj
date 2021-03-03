@@ -6,9 +6,10 @@
     <RootNamespace>Fuzzing.Fuzzer</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetModelFuzzer</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>Melissa Benua</Authors>
     <Company>Zeebee Technologies</Company>
+    <Copyright>Zeebee Technologies 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
