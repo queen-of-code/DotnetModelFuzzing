@@ -28,7 +28,7 @@ jobs:
           source-url: https://api.nuget.org/v3/index.json
           dotnet-version: 3.1.101
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.NUGET_PUSH}
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET_PUSH}}
 
       # Runs a single command using the runners shell
       - name: Create Nuget Package
