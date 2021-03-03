@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Fuzzing.Manipulations
+namespace DotnetModelFuzzer.Manipulations
 {
     public abstract class FuzzDbManipulation<T> : Manipulation<T>
     {

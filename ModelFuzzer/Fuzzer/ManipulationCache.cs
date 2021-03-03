@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DotnetModelFuzzer.Manipulations;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fuzzing.Manipulations
+namespace DotnetModelFuzzer.Fuzzer
 {
     /// <summary>
     /// Caches all the manipulations from the DLL into a static class, for much faster lookup and in
@@ -48,9 +49,9 @@ namespace Fuzzing.Manipulations
         {
             List<Manipulation<TManipType>> manips = new List<Manipulation<TManipType>>();
             foreach (var type in AllManipTypes)
-            { 
+            {
                 var m = GetOrAdd<TManipType>(type.Name, randomSeed);
-                if (m != null) 
+                if (m != null)
                     manips.Add(m); ;
             }
 

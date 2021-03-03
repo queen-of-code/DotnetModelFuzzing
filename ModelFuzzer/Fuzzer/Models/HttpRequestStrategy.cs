@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Fuzzing.Fuzzer.Models
+namespace DotnetModelFuzzer.Fuzzer.Models
 {
     public sealed class HttpRequestStrategy : Strategy
     {
@@ -84,10 +84,10 @@ namespace Fuzzing.Fuzzer.Models
 
         public override bool IsValid()
         {
-            if (this.Path == null || this.QueryParam == null)
+            if (Path == null || QueryParam == null)
                 return false;
 
-            if (this.Headers == null || this.Headers.Key == null || this.Headers.Value == null)
+            if (Headers == null || Headers.Key == null || Headers.Value == null)
                 return false;
 
             return true;

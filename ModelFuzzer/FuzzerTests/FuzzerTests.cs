@@ -1,12 +1,11 @@
+using DotnetModelFuzzer.Fuzzer;
+using DotnetModelFuzzer.Fuzzer.Models;
+using DotnetModelFuzzer.Manipulations.StringManips;
 using System.Collections.Generic;
 using System.Linq;
-
-using Fuzzing.Fuzzer;
-using Fuzzing.Fuzzer.Models;
-using Fuzzing.Manipulations.StringManips;
 using Xunit;
 
-namespace Fuzzer.FuzzerTests
+namespace DotnetModelFuzzer.Tests
 {
     public class FuzzerTests
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Fuzzing.Fuzzer.Models
+namespace DotnetModelFuzzer.Fuzzer.Models
 {
     public sealed class StringStrategy : Strategy
     {

@@ -1,9 +1,9 @@
-﻿using Fuzzing.Fuzzer;
+﻿using DotnetModelFuzzer.Fuzzer;
 using System;
 using System.Threading;
 using Xunit;
 
-namespace Fuzzer.FuzzerTests
+namespace DotnetModelFuzzer.Tests
 {
     public class UtilitiesTest
     {
@@ -32,7 +32,7 @@ namespace Fuzzer.FuzzerTests
         [InlineData(2)]
         [InlineData(-1)]
         [InlineData(-2)]
-        [InlineData(Int32.MaxValue)]
+        [InlineData(int.MaxValue)]
         public void EvenNumberTests(int numberToTest)
         {
             bool expectedEven = numberToTest % 2 == 0; // This is the Oracle

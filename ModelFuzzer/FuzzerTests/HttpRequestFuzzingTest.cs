@@ -1,10 +1,10 @@
-﻿using Fuzzing.Fuzzer.Models;
+﻿using DotnetModelFuzzer.Fuzzer.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Fuzzer.FuzzerTests
+namespace DotnetModelFuzzer.Tests
 {
     public class HttpRequestFuzzingTest
     {

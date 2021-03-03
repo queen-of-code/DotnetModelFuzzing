@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fuzzing.Fuzzer
+namespace DotnetModelFuzzer.Fuzzer
 {
     /// <summary>
     /// Bag of holding for extension methods and other useful things.

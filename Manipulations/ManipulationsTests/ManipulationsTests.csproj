@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyName>DotnetModelFuzzer.Manipulations.Tests</AssemblyName>
+
+    <RootNamespace>DotnetModelFuzzer.Manipulations.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

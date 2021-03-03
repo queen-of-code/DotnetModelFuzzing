@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using DotnetModelFuzzer.Manipulations;
 
-using Fuzzing.Manipulations;
+[assembly: InternalsVisibleTo("DotnetModelFuzzer.Tests")]
 
-[assembly: InternalsVisibleTo("Fuzzer.FuzzerTests")]
-
-namespace Fuzzing.Fuzzer
+namespace DotnetModelFuzzer.Fuzzer
 {
     /// <summary>
     /// Base class for all model-based fuzzing. 
@@ -25,33 +24,33 @@ namespace Fuzzing.Fuzzer
 
         public Model()
         {
-            this.Strategy = new TStrategy();
-            this.Random = new Random();
-            this.LoadedManipulations = LoadManipulations();
+            Strategy = new TStrategy();
+            Random = new Random();
+            LoadedManipulations = LoadManipulations();
         }
 
         public Model(TStrategy strategy, int randomSeed)
         {
-            this.Strategy = strategy;
-            this.Random = new Random(randomSeed);
-            this.RandomSeed = randomSeed;
+            Strategy = strategy;
+            Random = new Random(randomSeed);
+            RandomSeed = randomSeed;
 
-            this.LoadedManipulations = LoadManipulations();
+            LoadedManipulations = LoadManipulations();
         }
 
         private List<Manipulation<TManipType>> LoadManipulations()
         {
-            int rand = this.RandomSeed.HasValue ? this.RandomSeed.Value : Random.Next(Int32.MaxValue);
+            int rand = RandomSeed.HasValue ? RandomSeed.Value : Random.Next(int.MaxValue);
 
-            if (this.Strategy.UseAllRelevantManipulations)
+            if (Strategy.UseAllRelevantManipulations)
             {
                 return ManipulationCache.LoadAllManipulations<TManipType>(rand);
             }
-            else if (this.Strategy?.ValidManipulations != null && this.Strategy.ValidManipulations.Count > 0)
+            else if (Strategy?.ValidManipulations != null && Strategy.ValidManipulations.Count > 0)
             {
-                var manipulations = new List<Manipulation<TManipType>>(this.Strategy.ValidManipulations.Count);
+                var manipulations = new List<Manipulation<TManipType>>(Strategy.ValidManipulations.Count);
 
-                foreach (var manipName in this.Strategy.ValidManipulations)
+                foreach (var manipName in Strategy.ValidManipulations)
                 {
                     var manip = ManipulationCache.GetOrAdd<TManipType>(manipName, rand);
                     if (manip != null)
@@ -72,10 +71,10 @@ namespace Fuzzing.Fuzzer
 
         protected TFuzz DoFuzzingWork<TFuzz>(List<Manipulation<TFuzz>> manips, TFuzz input = default)
         {
-            if (this.LoadedManipulations == null || !this.LoadedManipulations.Any() || manips == null || !manips.Any())
+            if (LoadedManipulations == null || !LoadedManipulations.Any() || manips == null || !manips.Any())
                 return input;
 
-            var numberOfManips = this.Random.Next(1, Strategy.MaxManipulations + 1);
+            var numberOfManips = Random.Next(1, Strategy.MaxManipulations + 1);
 
             TFuzz fuzzed = input;
             for (int x = 0; x < numberOfManips; x++)
@@ -90,15 +89,15 @@ namespace Fuzzing.Fuzzer
 
         internal int LoadedManipulationsCount()
         {
-            if (this.LoadedManipulations == null)
+            if (LoadedManipulations == null)
                 return 0;
 
-            return this.LoadedManipulations.Count;
+            return LoadedManipulations.Count;
         }
 
         internal List<Manipulation<TManipType>> GetManipsForTesting()
         {
-            return this.LoadedManipulations;
+            return LoadedManipulations;
         }
     }
 }

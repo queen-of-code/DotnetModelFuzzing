@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fuzzing.Fuzzer.Models
+namespace DotnetModelFuzzer.Fuzzer.Models
 {
     /// <summary>
     /// Provides fuzzing for a provider key-value pair, based on a separated percentage chance
@@ -21,14 +21,14 @@ namespace Fuzzing.Fuzzer.Models
         public override Tuple<string, TValue> Fuzz(Tuple<string, TValue> input = null)
         {
             string newKey = input?.Item1;
-            if (this.Random.RollPercentage(this.Strategy.Key.Probability))
+            if (Random.RollPercentage(Strategy.Key.Probability))
             {
-                newKey = this.DoFuzzingWork<string>(this.LoadedManipulations, newKey);
+                newKey = DoFuzzingWork(LoadedManipulations, newKey);
             }
 
             TValue newValue = input?.Item2;
-            if (this.ValueModel != null)
-                newValue = this.ValueModel.Fuzz(newValue);
+            if (ValueModel != null)
+                newValue = ValueModel.Fuzz(newValue);
 
             return new Tuple<string, TValue>(newKey, newValue);
         }

@@ -1,8 +1,8 @@
-﻿using Fuzzing.Manipulations.CollectionManips;
+﻿using DotnetModelFuzzer.Manipulations.CollectionManips;
 using System.Collections.Generic;
 using Xunit;
 
-namespace ManipulationsTests
+namespace DotnetModelFuzzer.Manipulations.Tests
 {
     public class ListMemberDuplicationTests
     {

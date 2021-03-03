@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 
-namespace Fuzzing.Fuzzer.Models
+namespace DotnetModelFuzzer.Fuzzer.Models
 {
     /// <summary>
     /// Provides intelligent fuzzing of an HttpRequestMessage, which can then be sent using an
@@ -13,7 +13,7 @@ namespace Fuzzing.Fuzzer.Models
     public sealed class HttpRequestModel : Model<HttpRequestStrategy, HttpRequestMessage, string>
     {
         public HttpRequestModel() : base() { }
-        public HttpRequestModel(HttpRequestStrategy strategy, int randomSeed) 
+        public HttpRequestModel(HttpRequestStrategy strategy, int randomSeed)
             : base(strategy, randomSeed) { }
 
         public override HttpRequestMessage Fuzz(HttpRequestMessage input = null)
@@ -21,26 +21,26 @@ namespace Fuzzing.Fuzzer.Models
             if (input == null)
                 return null;
 
-            if (this.LoadedManipulations == null || this.LoadedManipulations.Count == 0)
+            if (LoadedManipulations == null || LoadedManipulations.Count == 0)
                 throw new ArgumentNullException("No manipulations loaded. Cannot fuzz!");
-            
 
-            if (this.Strategy == null || !this.Strategy.IsValid())
+
+            if (Strategy == null || !Strategy.IsValid())
                 throw new ArgumentException("No valid strategy was loaded. Cannot fuzz!");
 
             // Fuzz JUST the path of the URI
-            if (this.Random.RollPercentage(this.Strategy.Path.Probability))
+            if (Random.RollPercentage(Strategy.Path.Probability))
             {
-                List<Manipulations.Manipulation<string>> manips;
-                if (!this.Strategy.Path.UseAllRelevantManipulations)
+                List<DotnetModelFuzzer.Manipulations.Manipulation<string>> manips;
+                if (!Strategy.Path.UseAllRelevantManipulations)
                 {
-                    manips = (from m in this.LoadedManipulations
-                              where this.Strategy.Path.ValidManipulations.Contains(m.Name)
+                    manips = (from m in LoadedManipulations
+                              where Strategy.Path.ValidManipulations.Contains(m.Name)
                               select m).ToList();
                 }
                 else
                 {
-                    manips = this.LoadedManipulations;
+                    manips = LoadedManipulations;
                 }
                 var path = DoFuzzingWork<string>(manips, input.RequestUri.AbsolutePath);
                 var builder = new UriBuilder(input.RequestUri);
@@ -50,18 +50,18 @@ namespace Fuzzing.Fuzzer.Models
 
             // Fuzz JUST the queryparam section of the URI. It might be better to one day split the 
             // query line into KVP and fuzz each individually, but this is good enough for now.
-            if (this.Random.RollPercentage(this.Strategy.QueryParam.Probability))
+            if (Random.RollPercentage(Strategy.QueryParam.Probability))
             {
                 List<Manipulations.Manipulation<string>> manips;
-                if (!this.Strategy.QueryParam.UseAllRelevantManipulations)
+                if (!Strategy.QueryParam.UseAllRelevantManipulations)
                 {
-                    manips = (from m in this.LoadedManipulations
-                              where this.Strategy.QueryParam.ValidManipulations.Contains(m.Name)
+                    manips = (from m in LoadedManipulations
+                              where Strategy.QueryParam.ValidManipulations.Contains(m.Name)
                               select m).ToList();
                 }
                 else
                 {
-                    manips = this.LoadedManipulations;
+                    manips = LoadedManipulations;
                 }
                 var query = DoFuzzingWork<string>(manips, input.RequestUri.Query);
                 var builder = new UriBuilder(input.RequestUri);
@@ -73,44 +73,44 @@ namespace Fuzzing.Fuzzer.Models
             var headersToAdd = new List<Tuple<string, IEnumerable<string>>>();
             foreach (var header in input.Headers)
             {
-                if (this.Strategy.HeaderWhitelist.Contains(header.Key))
+                if (Strategy.HeaderWhitelist.Contains(header.Key))
                     continue;
 
-                if (this.Random.RollPercentage(this.Strategy.Headers.Key.Probability))
+                if (Random.RollPercentage(Strategy.Headers.Key.Probability))
                 {
                     List<Manipulations.Manipulation<string>> manips;
-                    if (!this.Strategy.Headers.Key.UseAllRelevantManipulations)
+                    if (!Strategy.Headers.Key.UseAllRelevantManipulations)
                     {
-                        manips = (from m in this.LoadedManipulations
-                                  where this.Strategy.Headers.Key.ValidManipulations.Contains(m.Name)
+                        manips = (from m in LoadedManipulations
+                                  where Strategy.Headers.Key.ValidManipulations.Contains(m.Name)
                                   select m).ToList();
                     }
                     else
                     {
-                        manips = this.LoadedManipulations;
+                        manips = LoadedManipulations;
                     }
                     var newKey = DoFuzzingWork<string>(manips, header.Key);
                     headersToAdd.Add(new Tuple<string, IEnumerable<string>>(newKey, header.Value));
                 }
 
-                if (this.Random.RollPercentage(this.Strategy.Headers.Value.Probability))
+                if (Random.RollPercentage(Strategy.Headers.Value.Probability))
                 {
-                    var values = new String[header.Value.Count()];
+                    var values = new string[header.Value.Count()];
                     int index = 0;
                     foreach (var val in header.Value)
                     {
-                        if (this.Random.RollPercentage(this.Strategy.Headers.Value.Probability))
+                        if (Random.RollPercentage(Strategy.Headers.Value.Probability))
                         {
                             List<Manipulations.Manipulation<string>> manips;
-                            if (!this.Strategy.Headers.Value.UseAllRelevantManipulations)
+                            if (!Strategy.Headers.Value.UseAllRelevantManipulations)
                             {
-                                manips = (from m in this.LoadedManipulations
-                                          where this.Strategy.Headers.Value.ValidManipulations.Contains(m.Name)
+                                manips = (from m in LoadedManipulations
+                                          where Strategy.Headers.Value.ValidManipulations.Contains(m.Name)
                                           select m).ToList();
                             }
                             else
                             {
-                                manips = this.LoadedManipulations;
+                                manips = LoadedManipulations;
                             }
                             values[index] = DoFuzzingWork<string>(manips, val);
                         }
@@ -128,7 +128,7 @@ namespace Fuzzing.Fuzzer.Models
 
             if (headersToAdd.Count > 0)
             {
-                foreach(var pair in headersToAdd)
+                foreach (var pair in headersToAdd)
                 {
                     try
                     {

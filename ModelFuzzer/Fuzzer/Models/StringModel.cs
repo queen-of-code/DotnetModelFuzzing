@@ -1,4 +1,4 @@
-﻿namespace Fuzzing.Fuzzer.Models
+﻿namespace DotnetModelFuzzer.Fuzzer.Models
 {
     public sealed class StringModel : Model<StringStrategy, string, string>
     {
@@ -9,7 +9,7 @@
 
         public override string Fuzz(string input = null)
         {
-            return DoFuzzingWork<string>(this.LoadedManipulations, input);
+            return DoFuzzingWork(LoadedManipulations, input);
         }
     }
 }

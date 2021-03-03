@@ -2,14 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Fuzzing.Manipulations</AssemblyName>
-    <RootNamespace>Fuzzing.Manipulations</RootNamespace>
+    <AssemblyName>DotnetModelFuzzer.Manipulations</AssemblyName>
+    <RootNamespace>DotnetModelFuzzer.Manipulations</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetModelFuzzer.Manipulations</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.1.0</Version>
     <Copyright>Zeebee Technologies 2021</Copyright>
     <Authors>Melissa Benua</Authors>
     <Company>Zeebee Technologies</Company>
+    <PackageProjectUrl>https://github.com/queen-of-code/DotnetModelFuzzing</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/queen-of-code/DotnetModelFuzzing</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

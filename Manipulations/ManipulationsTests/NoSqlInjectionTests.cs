@@ -1,7 +1,7 @@
-﻿using Fuzzing.Manipulations.VulnerabilityManips;
+﻿using DotnetModelFuzzer.Manipulations.VulnerabilityManips;
 using Xunit;
 
-namespace ManipulationsTests
+namespace DotnetModelFuzzer.Manipulations.Tests
 {
     public class NoSqlInjectionTests
     {

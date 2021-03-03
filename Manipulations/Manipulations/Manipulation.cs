@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Fuzzer.ManipulationsTests.dll")]
+[assembly: InternalsVisibleTo("DotnetModelFuzzer.Manipulations.Tests.dll")]
 
-namespace Fuzzing.Manipulations
+namespace DotnetModelFuzzer.Manipulations
 {
     public abstract class Manipulation<T> : IManupulation
     {
@@ -19,9 +19,9 @@ namespace Fuzzing.Manipulations
             Random = new Random(seed);
         }
 
-        public abstract T Manipulate(T input = default(T));
+        public abstract T Manipulate(T input = default);
 
-        public string Name => this.GetType().Name;
+        public string Name => GetType().Name;
 
         /// <summary>
         /// Generates a simple ASCII string of the specified length. 

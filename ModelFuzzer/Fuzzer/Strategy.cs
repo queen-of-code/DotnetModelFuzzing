@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Fuzzing.Fuzzer
+namespace DotnetModelFuzzer.Fuzzer
 {
     public class Strategy
     {
@@ -45,5 +45,5 @@ namespace Fuzzing.Fuzzer
         {
             return true;
         }
-    }  
+    }
 }

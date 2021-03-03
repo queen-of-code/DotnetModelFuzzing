@@ -1,4 +1,4 @@
-﻿namespace Fuzzing.Manipulations
+﻿namespace DotnetModelFuzzing.Manipulations
 {
     public interface IGenerationManipulation<T>
     {

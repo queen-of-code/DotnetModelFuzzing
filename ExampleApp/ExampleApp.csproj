@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ModelFuzzer\Fuzzer\Fuzzer.csproj" />
+    <ProjectReference Include="..\ModelFuzzer\Fuzzer\DotnetModelFuzzer.csproj" />
   </ItemGroup>
 
 </Project>

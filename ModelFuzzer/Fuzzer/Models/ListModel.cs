@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Fuzzing.Fuzzer.Models
+namespace DotnetModelFuzzer.Fuzzer.Models
 {
-    public sealed class ListModel<T, TStrategy> : Model<ListStrategy<TStrategy>, IList<T>, T> 
+    public sealed class ListModel<T, TStrategy> : Model<ListStrategy<TStrategy>, IList<T>, T>
         where T : new()
         where TStrategy : Strategy
     {
@@ -13,12 +13,12 @@ namespace Fuzzing.Fuzzer.Models
             foreach (var item in input)
             {
                 // Only fuzz  as many items as we set in the overall cap
-                if (fuzzCount >= this.Strategy.MaxItemsToFuzz)
+                if (fuzzCount >= Strategy.MaxItemsToFuzz)
                     break;
 
-                if (this.Random.RollPercentage(this.Strategy.Probability))
+                if (Random.RollPercentage(Strategy.Probability))
                 {
-                    modified.Add(this.DoFuzzingWork<T>(this.LoadedManipulations, item));
+                    modified.Add(DoFuzzingWork(LoadedManipulations, item));
                     ++fuzzCount;
                 }
                 else

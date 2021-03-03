@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Fuzzing.Manipulations
+namespace DotnetModelFuzzer.Manipulations
 {
     public interface IListManipulation<T>
     {

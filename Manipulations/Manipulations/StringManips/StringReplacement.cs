@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fuzzing.Manipulations.StringManips
+namespace DotnetModelFuzzer.Manipulations.StringManips
 {
     public class StringReplacement : Manipulation<string>, IMutationManipulation<string>
     {
@@ -15,7 +15,7 @@ namespace Fuzzing.Manipulations.StringManips
             int length = Random.Next(1, input.Length + 1);
             var newString = GenerateRandomAsciiString(length);
 
-            return this.InsertString(input, newString);
+            return InsertString(input, newString);
         }
     }
 }

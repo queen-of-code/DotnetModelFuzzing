@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Fuzzing.Manipulations.CollectionManips
+namespace DotnetModelFuzzer.Manipulations.CollectionManips
 {
-    public class ListMemberDuplication<U> : Manipulation<List<U>>, IListManipulation<U> 
+    public class ListMemberDuplication<U> : Manipulation<List<U>>, IListManipulation<U>
     {
         public ListMemberDuplication()
         {

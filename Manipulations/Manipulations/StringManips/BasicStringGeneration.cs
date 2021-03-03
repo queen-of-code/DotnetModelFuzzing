@@ -1,4 +1,6 @@
-﻿namespace Fuzzing.Manipulations.StringManips
+﻿using DotnetModelFuzzing.Manipulations;
+
+namespace DotnetModelFuzzer.Manipulations.StringManips
 {
     public class BasicStringGeneration : Manipulation<string>, IGenerationManipulation<string>
     {
@@ -7,7 +9,7 @@
 
         public override string Manipulate(string input = default)
         {
-            int length = this.Random.Next(0, short.MaxValue);
+            int length = Random.Next(0, short.MaxValue);
 
             return GenerateRandomAsciiString(length);
         }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fuzzing.Manipulations.StringManips
+namespace DotnetModelFuzzer.Manipulations.StringManips
 {
     public class BasicStringMutation : Manipulation<string>, IMutationManipulation<string>
     {

@@ -1,4 +1,4 @@
-﻿using Fuzzing.Fuzzer.Models;
+﻿using DotnetModelFuzzer.Fuzzer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

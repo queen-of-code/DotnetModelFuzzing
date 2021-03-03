@@ -1,7 +1,7 @@
-﻿using Fuzzing.Manipulations.StringManips;
+﻿using DotnetModelFuzzer.Manipulations.StringManips;
 using Xunit;
 
-namespace ManipulationsTests
+namespace DotnetModelFuzzer.Manipulations.Tests
 {
     public class BasicStringMutationTests
     {

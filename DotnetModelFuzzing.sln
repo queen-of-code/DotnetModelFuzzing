@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29021.104
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manipulations", "Manipulations\Manipulations\Manipulations.csproj", "{B8876F81-B234-41A1-A53B-35927B8C26B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fuzzer", "ModelFuzzer\Fuzzer\Fuzzer.csproj", "{6CE81298-8D6B-4785-8A48-0CFBD2CA5F65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetModelFuzzer", "ModelFuzzer\Fuzzer\DotnetModelFuzzer.csproj", "{6CE81298-8D6B-4785-8A48-0CFBD2CA5F65}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FuzzerTests", "ModelFuzzer\FuzzerTests\FuzzerTests.csproj", "{730C32E1-C7BC-4C78-AFE6-0D484D122F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetModelFuzzer.Tests", "ModelFuzzer\FuzzerTests\DotnetModelFuzzer.Tests.csproj", "{730C32E1-C7BC-4C78-AFE6-0D484D122F27}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManipulationsTests", "Manipulations\ManipulationsTests\ManipulationsTests.csproj", "{DE9D443C-2415-4342-8EE7-1DE49061DA4E}"
 EndProject
