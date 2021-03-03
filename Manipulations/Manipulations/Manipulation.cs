@@ -21,6 +21,8 @@ namespace Fuzzing.Manipulations
 
         public abstract T Manipulate(T input = default(T));
 
+        public string Name => this.GetType().Name;
+
         /// <summary>
         /// Generates a simple ASCII string of the specified length. 
         /// </summary>

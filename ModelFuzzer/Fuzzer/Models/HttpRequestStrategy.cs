@@ -35,24 +35,44 @@ namespace Fuzzing.Fuzzer.Models
                 QueryParam = new StringStrategy
                 {
                     MaxManipulations = 2,
-                    Probability = 25
+                    Probability = 25,
+                    UseAllRelevantManipulations = false,
+                    ValidManipulations = new List<string>
+                    {
+                        "FuzzDbManipulation",
+                        "ControlCharInjection",
+                        "XssInjection",
+                        "FormatStringsInjection"
+                    }
                 },
                 Path = new StringStrategy
                 {
-                    MaxManipulations = 1,
-                    Probability = 5
+                    MaxManipulations = 2,
+                    Probability = 5,
+                    UseAllRelevantManipulations = false,
+                    ValidManipulations = new List<string>
+                    {
+                        "FuzzDbManipulation",
+                        "ControlCharInjection",
+                        "XssInjection",
+                        "FormatStringsInjection"
+                    }
                 },
                 Headers = new KeyValuePairStrategy<ListStrategy<StringStrategy>>
                 {
                     Key = new StringStrategy
                     {
+                        UseAllRelevantManipulations = true,
+                        MaxManipulations = 1,
                         Probability = 5
                     },
                     Value = new ListStrategy<StringStrategy>
                     {
-                        MaxItemsToFuzz = 3,
+                        UseAllRelevantManipulations = true,
+                        MaxManipulations = 1,
+                        MaxItemsToFuzz = 2,
                         Probability = 10
-                    }
+                    },
                 }
             };
 
