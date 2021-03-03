@@ -72,7 +72,7 @@ namespace Fuzzing.Fuzzer
 
         protected TFuzz DoFuzzingWork<TFuzz>(List<Manipulation<TFuzz>> manips, TFuzz input = default)
         {
-            if (this.LoadedManipulations == null || !this.LoadedManipulations.Any())
+            if (this.LoadedManipulations == null || !this.LoadedManipulations.Any() || manips == null || !manips.Any())
                 return input;
 
             var numberOfManips = this.Random.Next(1, Strategy.MaxManipulations + 1);
@@ -80,7 +80,7 @@ namespace Fuzzing.Fuzzer
             TFuzz fuzzed = input;
             for (int x = 0; x < numberOfManips; x++)
             {
-                int whichManip = Random.Next(0, this.LoadedManipulations.Count);
+                int whichManip = Random.Next(0, manips.Count);
                 var manip = manips[whichManip];
                 fuzzed = manip.Manipulate(fuzzed);
             }

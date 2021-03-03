@@ -25,7 +25,7 @@ namespace Fuzzing.Manipulations
             if (string.IsNullOrEmpty(baseDir))
                 return null;
 
-            var fullPath = Path.Combine("fuzzdb", "attack", baseDir);
+            var fullPath = Path.Combine(FuzzDbAttackPathBase, "attack", baseDir);
             if (!Directory.Exists(fullPath))
                 return null;
 

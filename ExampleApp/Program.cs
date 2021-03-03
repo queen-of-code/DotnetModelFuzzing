@@ -15,10 +15,7 @@ namespace ExampleApp
         {
             var strategy = HttpRequestStrategy.GenerateDefaultStrategy();
             strategy.QueryParam.Probability = 80;
-            strategy.Headers.Key.Probability = 10;
-            strategy.Headers.Value.Probability = 30;
-            var model = new HttpRequestModel(strategy, 7502); // Predictable random seed.
-       
+            var model = new HttpRequestModel(strategy, 10003); // Predictable random seed.
 
             // First make some nice and simple HTTP requests.
             var requests = new HttpRequestMessage[NumberRequests];
@@ -33,7 +30,7 @@ namespace ExampleApp
                 message.Headers.Add("accept-encoding", "gzip, deflate, br");
                 message.Headers.Add("accept-language", "en-US,en;q=0.9");
                 message.Headers.Add("cache-control", "max-age=0");
-                message.Headers.Add("Cookie", "SRCHD=AF=NOFORM;");
+                message.Headers.Add("Cookie", "SRCHD=AF=NOFORM;MUID=" + Guid.NewGuid().ToString("N"));
 
                 requests[x] = message;
 

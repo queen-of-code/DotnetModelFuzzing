@@ -31,7 +31,18 @@ namespace Fuzzing.Fuzzer.Models
             // Fuzz JUST the path of the URI
             if (this.Random.RollPercentage(this.Strategy.Path.Probability))
             {
-                var path = DoFuzzingWork<string>(this.LoadedManipulations, input.RequestUri.AbsolutePath);
+                List<Manipulations.Manipulation<string>> manips;
+                if (!this.Strategy.Path.UseAllRelevantManipulations)
+                {
+                    manips = (from m in this.LoadedManipulations
+                              where this.Strategy.Path.ValidManipulations.Contains(m.Name)
+                              select m).ToList();
+                }
+                else
+                {
+                    manips = this.LoadedManipulations;
+                }
+                var path = DoFuzzingWork<string>(manips, input.RequestUri.AbsolutePath);
                 var builder = new UriBuilder(input.RequestUri);
                 builder.Path = path;
                 input.RequestUri = builder.Uri;
@@ -41,7 +52,18 @@ namespace Fuzzing.Fuzzer.Models
             // query line into KVP and fuzz each individually, but this is good enough for now.
             if (this.Random.RollPercentage(this.Strategy.QueryParam.Probability))
             {
-                var query = DoFuzzingWork<string>(this.LoadedManipulations, input.RequestUri.Query);
+                List<Manipulations.Manipulation<string>> manips;
+                if (!this.Strategy.QueryParam.UseAllRelevantManipulations)
+                {
+                    manips = (from m in this.LoadedManipulations
+                              where this.Strategy.QueryParam.ValidManipulations.Contains(m.Name)
+                              select m).ToList();
+                }
+                else
+                {
+                    manips = this.LoadedManipulations;
+                }
+                var query = DoFuzzingWork<string>(manips, input.RequestUri.Query);
                 var builder = new UriBuilder(input.RequestUri);
                 builder.Query = query;
                 input.RequestUri = builder.Uri;
@@ -56,7 +78,18 @@ namespace Fuzzing.Fuzzer.Models
 
                 if (this.Random.RollPercentage(this.Strategy.Headers.Key.Probability))
                 {
-                    var newKey = DoFuzzingWork<string>(this.LoadedManipulations, header.Key);
+                    List<Manipulations.Manipulation<string>> manips;
+                    if (!this.Strategy.Headers.Key.UseAllRelevantManipulations)
+                    {
+                        manips = (from m in this.LoadedManipulations
+                                  where this.Strategy.Headers.Key.ValidManipulations.Contains(m.Name)
+                                  select m).ToList();
+                    }
+                    else
+                    {
+                        manips = this.LoadedManipulations;
+                    }
+                    var newKey = DoFuzzingWork<string>(manips, header.Key);
                     headersToAdd.Add(new Tuple<string, IEnumerable<string>>(newKey, header.Value));
                 }
 
@@ -68,7 +101,18 @@ namespace Fuzzing.Fuzzer.Models
                     {
                         if (this.Random.RollPercentage(this.Strategy.Headers.Value.Probability))
                         {
-                            values[index] = DoFuzzingWork<string>(this.LoadedManipulations, val);
+                            List<Manipulations.Manipulation<string>> manips;
+                            if (!this.Strategy.Headers.Value.UseAllRelevantManipulations)
+                            {
+                                manips = (from m in this.LoadedManipulations
+                                          where this.Strategy.Headers.Value.ValidManipulations.Contains(m.Name)
+                                          select m).ToList();
+                            }
+                            else
+                            {
+                                manips = this.LoadedManipulations;
+                            }
+                            values[index] = DoFuzzingWork<string>(manips, val);
                         }
                         else
                         {
