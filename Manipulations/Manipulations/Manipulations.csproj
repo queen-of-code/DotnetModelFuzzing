@@ -6,7 +6,7 @@
     <RootNamespace>DotnetModelFuzzer.Manipulations</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetModelFuzzer.Manipulations</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Copyright>Zeebee Technologies 2021</Copyright>
     <Authors>Melissa Benua</Authors>
     <Company>Zeebee Technologies</Company>
@@ -20,9 +20,17 @@
 
   
   <ItemGroup>
-    <None Update="fuzzdb\**\*.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Content Include="fuzzdb\**\*.txt">
+      <Pack>true</Pack>
+      <PackagePath>content;lib\$(TargetFramework)\fuzzdb</PackagePath>
+      <IncludeInPackage>true</IncludeInPackage>
+      <CopyToOutput>true</CopyToOutput>
+      <BuildAction>Content</BuildAction>
+      <copyToOutput>true</copyToOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+
   </ItemGroup>
 
 </Project>
