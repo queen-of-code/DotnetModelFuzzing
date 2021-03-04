@@ -43,6 +43,6 @@ jobs:
       - name: Push Package to Nuget
         run: | # | character makes the "run" property multi-line, so we can put multiple commands in the same step
           mkdir __out
-          nuget pack ModelFuzzer/Fuzzer/DotnetModelFuzzer.csproj -OutputDirectory __out -IncludeReferencedProjects -symbols
+          nuget pack ModelFuzzer/Fuzzer/DotnetModelFuzzer.csproj -OutputDirectory __out -IncludeReferencedProjects -symbols -properties Configuration=Release
           dotnet nuget push "./__out/DotnetModelFuzzer*.nupkg" --skip-duplicate --api-key ${{secrets.NUGET_PUSH}}
           rm -rf __out
