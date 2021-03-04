@@ -38,22 +38,34 @@ namespace DotnetModelFuzzer.Manipulations
                 var base64 = Directory.GetFiles(fullPath, "*.base64");
                 foreach (var file in base64)
                 {
+                    if (excludedFileNames != null)
+                    {
+                        if (excludedFileNames.Any(p => Path.GetFileNameWithoutExtension(file).Contains(p)))
+                            continue;
+                    }
+
                     var fileText = File.ReadAllText(file);
                     var base64EncodedBytes = System.Convert.FromBase64String(fileText);
-                    File.WriteAllText(file.Replace(".base64", ""), System.Text.Encoding.UTF8.GetString(base64EncodedBytes));
-                }
-            }
-
-            foreach (var file in Directory.GetFiles(fullPath, "*.txt"))
-            {
-                if (excludedFileNames != null)
-                {
-                    if (excludedFileNames.Contains(Path.GetFileNameWithoutExtension(file)))
-                        continue;
+                    var decoded = System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+                    allInputs.AddRange(decoded.Split("\r\n"));
                 }
 
-                allInputs.AddRange(File.ReadAllLines(file).Where(s => !string.IsNullOrEmpty(s)));
+                allInputs.RemoveAll(s => string.IsNullOrEmpty(s));
             }
+            //else
+            //{
+            //    foreach (var file in Directory.GetFiles(fullPath, "*.txt"))
+            //    {
+
+            //        if (excludedFileNames != null)
+            //        {
+            //            if (excludedFileNames.Contains(Path.GetFileNameWithoutExtension(file)))
+            //                continue;
+            //        }
+
+            //        allInputs.AddRange(File.ReadAllLines(file).Where(s => !string.IsNullOrEmpty(s)));
+            //    }
+            //}
 
             return allInputs;
         }

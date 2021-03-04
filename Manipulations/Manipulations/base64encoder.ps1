@@ -6,8 +6,16 @@ $outfile = $f.FullName + ".base64"
 
 echo $outfile
 
-$input = Get-Content $f.FullName
-$base = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($input))
+$input = Get-Content $f.FullName -Raw
+
+$input.contains("`n")
+$input.contains("`r")
+
+#$input = $input -replace [System.Environment]::NewLine, "NEWLINEOMG"
+#$input = $input -replace '`r`n', "NEWLINEOMG"
+#$input = $input -replace '`n', "NEWLINEOMG"
+#$input = $input -replace "`r", "NEWLINEOMG"
+$base = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($input))
 
 #echo $base
 

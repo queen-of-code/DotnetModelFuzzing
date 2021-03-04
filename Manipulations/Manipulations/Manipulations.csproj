@@ -6,7 +6,7 @@
     <RootNamespace>DotnetModelFuzzer.Manipulations</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetModelFuzzer.Manipulations</PackageId>
-    <Version>0.1.3</Version>
+    <Version>0.1.4</Version>
     <Copyright>Zeebee Technologies 2021</Copyright>
     <Authors>Melissa Benua</Authors>
     <Company>Zeebee Technologies</Company>
