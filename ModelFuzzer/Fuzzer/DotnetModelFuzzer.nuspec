@@ -13,10 +13,11 @@
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>security testing fuzzing</tags>
-  </metadata>
-      <contentFiles>
+    <contentFiles>
 
-        <!-- Add files from an arbitrary folder that's not necessarily in the project -->
-        <files include="..\..\Manipulations\Manipulations\fuzzdb\**\*.base64" flatten="false" copyToOutput="true" />
+      <!-- Add files from an arbitrary folder that's not necessarily in the project -->
+      <files include="..\..\Manipulations\Manipulations\fuzzdb\**\*.base64" flatten="false" copyToOutput="true" />
     </contentFiles>
+  </metadata>
+
 </package>
