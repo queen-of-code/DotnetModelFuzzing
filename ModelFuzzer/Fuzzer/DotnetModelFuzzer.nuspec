@@ -17,6 +17,6 @@
       <files>
 
         <!-- Add files from an arbitrary folder that's not necessarily in the project -->
-        <file src="..\..\Manipulations\Manipulations\fuzzdb\**\*.base64" target="content\fuzzdb" />
+        <file src="..\..\Manipulations\Manipulations\fuzzdb\**\*.base64" target="contentFiles\fuzzdb" />
     </files>
 </package>
