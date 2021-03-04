@@ -6,7 +6,7 @@
     <RootNamespace>DotnetModelFuzzer.Manipulations</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetModelFuzzer.Manipulations</PackageId>
-    <Version>0.1.2</Version>
+    <Version>0.1.3</Version>
     <Copyright>Zeebee Technologies 2021</Copyright>
     <Authors>Melissa Benua</Authors>
     <Company>Zeebee Technologies</Company>
@@ -21,7 +21,9 @@
 
   
   <ItemGroup>
-    <Content Include="fuzzdb\attack\**\*.txt">
+    <None Include="fuzzdb\**\*.txt" />
+      
+    <Content Include="fuzzdb\attack\**\*.base64">
       <Pack>true</Pack>
       <PackagePath>lib\$(TargetFramework)\fuzzdb\attack</PackagePath>
       <IncludeInPackage>true</IncludeInPackage>
@@ -31,7 +33,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
     </Content>
-    <Content Include="fuzzdb\discovery\**\*.txt">
+    <Content Include="fuzzdb\discovery\**\*.base64">
       <Pack>true</Pack>
       <PackagePath>lib\$(TargetFramework)\fuzzdb\discovery</PackagePath>
       <IncludeInPackage>true</IncludeInPackage>

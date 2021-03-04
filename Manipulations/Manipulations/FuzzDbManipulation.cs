@@ -30,6 +30,20 @@ namespace DotnetModelFuzzer.Manipulations
                 return null;
 
             var allInputs = new List<string>();
+
+            // We have to do this insanity because of nuget. All the fuzzdb attacks are Base64 encoded, and get decoded on first load.
+            var files = Directory.GetFiles(fullPath, "*.txt");
+            if (files == null || files.Length == 0)
+            {
+                var base64 = Directory.GetFiles(fullPath, "*.base64");
+                foreach (var file in base64)
+                {
+                    var fileText = File.ReadAllText(file);
+                    var base64EncodedBytes = System.Convert.FromBase64String(fileText);
+                    File.WriteAllText(file.Replace(".base64", ""), System.Text.Encoding.UTF8.GetString(base64EncodedBytes));
+                }
+            }
+
             foreach (var file in Directory.GetFiles(fullPath, "*.txt"))
             {
                 if (excludedFileNames != null)
