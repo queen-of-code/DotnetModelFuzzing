@@ -9,7 +9,12 @@
 
         public override string Fuzz(string input = null)
         {
-            return DoFuzzingWork(LoadedManipulations, input);
+            if (Random.RollPercentage(Strategy.Probability))
+            {
+                return DoFuzzingWork(LoadedManipulations, input);
+            }
+
+            return input;
         }
     }
 }
