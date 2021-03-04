@@ -14,9 +14,9 @@
     <copyright>$copyright$</copyright>
     <tags>security testing fuzzing</tags>
   </metadata>
-      <files>
+      <contentFiles>
 
         <!-- Add files from an arbitrary folder that's not necessarily in the project -->
-        <file src="..\..\Manipulations\Manipulations\fuzzdb\**\*.base64" target="contentFiles\fuzzdb" copyToOutput="true" />
-    </files>
+        <files include="..\..\Manipulations\Manipulations\fuzzdb\**\*.base64" flatten="false" copyToOutput="true" />
+    </contentFiles>
 </package>
