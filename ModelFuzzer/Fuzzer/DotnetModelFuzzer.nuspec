@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Melissa Benua</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/queen-of-code/DotnetModelFuzzing</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <description>$description$</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>security testing fuzzing</tags>
+  </metadata>
+      <files>
+
+        <!-- Add files from an arbitrary folder that's not necessarily in the project -->
+        <file src="..\..\Manipulations\Manipulations\fuzzdb\**\*.base64" target="content\fuzzdb" />
+    </files>
+</package>

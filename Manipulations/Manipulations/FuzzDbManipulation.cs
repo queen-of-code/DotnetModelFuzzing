@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -26,6 +27,8 @@ namespace DotnetModelFuzzer.Manipulations
                 return null;
 
             var fullPath = Path.Combine(FuzzDbAttackPathBase, "attack", baseDir);
+
+            Console.WriteLine(fullPath);
             if (!Directory.Exists(fullPath))
                 return null;
 
@@ -33,6 +36,8 @@ namespace DotnetModelFuzzer.Manipulations
 
             // We have to do this insanity because of nuget. All the fuzzdb attacks are Base64 encoded, and get decoded on first load.
             var files = Directory.GetFiles(fullPath, "*.txt");
+
+            Console.WriteLine("Found this many files: " + files.Length);
             if (files == null || files.Length == 0)
             {
                 var base64 = Directory.GetFiles(fullPath, "*.base64");
