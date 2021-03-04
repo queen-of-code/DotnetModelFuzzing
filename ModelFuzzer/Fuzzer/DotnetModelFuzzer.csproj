@@ -6,9 +6,10 @@
     <RootNamespace>DotnetModelFuzzer.Fuzzer</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetModelFuzzer</PackageId>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <Authors>Melissa Benua</Authors>
     <Company>Zeebee Technologies</Company>
+    <Description>A model-based fuzzer for using in dotnet core. Uses manipulations from FuzzDB!</Description>
     <Copyright>Zeebee Technologies 2021</Copyright>
     <PackageProjectUrl>https://github.com/queen-of-code/DotnetModelFuzzing</PackageProjectUrl>
     <RepositoryUrl>https://github.com/queen-of-code/DotnetModelFuzzing</RepositoryUrl>

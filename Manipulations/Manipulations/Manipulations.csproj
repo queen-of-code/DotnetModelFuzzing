@@ -6,10 +6,11 @@
     <RootNamespace>DotnetModelFuzzer.Manipulations</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>DotnetModelFuzzer.Manipulations</PackageId>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <Copyright>Zeebee Technologies 2021</Copyright>
     <Authors>Melissa Benua</Authors>
     <Company>Zeebee Technologies</Company>
+    <Description>A set of fuzzing manipulations, primarily wrapped around FuzzDB attacks. Usable stand-alone!</Description>
     <PackageProjectUrl>https://github.com/queen-of-code/DotnetModelFuzzing</PackageProjectUrl>
     <RepositoryUrl>https://github.com/queen-of-code/DotnetModelFuzzing</RepositoryUrl>
   </PropertyGroup>
@@ -20,9 +21,19 @@
 
   
   <ItemGroup>
-    <Content Include="fuzzdb\**\*.txt">
+    <Content Include="fuzzdb\attack\**\*.txt">
       <Pack>true</Pack>
-      <PackagePath>content;lib\$(TargetFramework)\fuzzdb</PackagePath>
+      <PackagePath>lib\$(TargetFramework)\fuzzdb\attack</PackagePath>
+      <IncludeInPackage>true</IncludeInPackage>
+      <CopyToOutput>true</CopyToOutput>
+      <BuildAction>Content</BuildAction>
+      <copyToOutput>true</copyToOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <Content Include="fuzzdb\discovery\**\*.txt">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)\fuzzdb\discovery</PackagePath>
       <IncludeInPackage>true</IncludeInPackage>
       <CopyToOutput>true</CopyToOutput>
       <BuildAction>Content</BuildAction>
