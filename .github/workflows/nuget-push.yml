@@ -30,6 +30,11 @@ jobs:
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_PUSH}}
 
+      - name: Setup NuGet.exe for use with actions
+      # You may pin to the exact commit or the version.
+      # uses: NuGet/setup-nuget@04b0c2b8d1b97922f67eca497d7cf0bf17b8ffe1
+        uses: NuGet/setup-nuget@v1.0.5
+
       # Runs a single command using the runners shell
       - name: Create Nuget Package
         run: dotnet publish -c Release
@@ -38,6 +43,6 @@ jobs:
       - name: Push Package to Nuget
         run: | # | character makes the "run" property multi-line, so we can put multiple commands in the same step
           mkdir __out
-          dotnet pack -c Release -o __out --no-restore
-          dotnet nuget push "./__out/DotnetModelFuzzer*.nupkg" --skip-duplicate --no-symbols true --api-key ${{secrets.NUGET_PUSH}}
+          nuget pack ModelFuzzer\Fuzzer\DotnetModelFuzzer.csproj -OutputDirectory __out -IncludeReferencedProjects -symbols
+          dotnet nuget push "./__out/DotnetModelFuzzer*.nupkg" --skip-duplicate --api-key ${{secrets.NUGET_PUSH}}
           rm -rf __out
